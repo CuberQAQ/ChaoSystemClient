@@ -7,46 +7,35 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const appTitle = 'Form Styling Demo';
+    const appTitle = 'Chaos System Cilent';
     return MaterialApp(
       title: appTitle,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle),
-        ),
-        body: const MyCustomForm(),
-      ),
+          appBar: AppBar(
+            title: const Text(appTitle),
+          ),
+          body: const SeatTable()),
     );
   }
 }
 
-class MyCustomForm extends StatelessWidget {
-  const MyCustomForm({super.key});
-
+class SeatTable extends StatelessWidget {
+  const SeatTable({super.key});
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Enter a search term',
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-          child: TextFormField(
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              labelText: 'Enter your username',
-            ),
-          ),
-        ),
-      ],
+    return GridView.count(
+      crossAxisCount: 6,
+      padding: const EdgeInsets.all(15.0),
+      children: List.generate(40, (index) {
+        return SizedBox(
+          height: 40,
+          width: 22,
+            child: Container(
+                decoration: const BoxDecoration(color: Colors.black26),
+                child: const Center(
+                  child: Text("座位"),
+                )));
+      }),
     );
   }
 }
